@@ -2,11 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <!--StyleSheet Source: https://bootswatch.com/pulse/-->
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen">
-    <title>hi</title>
+    <!--Icons source: https://ionicons.com/-->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <title>CRC Card Builder</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder</div>
+       
+    </nav>
+    <div class="jumbotron" style="text-align:center;">
+        <h1 class="my-4">Hello!</h1>
+        <p class="lead">You can build up to 20 CRC cards. Happy card building!</p>
+        <hr class="my-4">
+        <div class="form-group">
+            <div>
+                <label for="CardNum">Please enter the number of CRC cards you would like. </label>
+                <input type="text" class="form-control" placeholder="your number..." id="CardNum">
+            </div>
+        </div>
+
+        <div>
+            <div class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Create Cards</a>
+            </div>
+        </div>
+        <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
+            <a href="#"></a>
+            <ion-icon name="help-circle" size="large"></ion-icon>
+        </span>
+    </div>
 </body>
 
 </html>
+<style>
+    #centerBar {
+        font-size: 2em;
+        font-weight: 700;
+        color: #fff;
+        margin-right:auto;
+        margin-left:3%
+    }
+    #CardNum{
+        width:15%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    #helpIcon{
+        display:inline-block;
+        margin-right:17%;
+        float:right;
+    }
+</style>
+<script type="text/javascript">
+
+    document.getElementById("CardNum").onchange = function () { checkIfValid() };
+
+    //input has to be a number and has to be less than 20 cards
+    function checkIfValid() {
+        var txtCardNum = document.getElementById("CardNum");
+     //   if ( txtCardNum.value)
+    }
+</script>
