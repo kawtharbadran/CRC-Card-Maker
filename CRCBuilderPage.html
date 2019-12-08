@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+#CRCCard{
+border: 1px solid black;
+padding: 15px;
+font-size:1.1rem;
+}
+
+
+#Header2{
+ text-align: center;
+}
+
+</style>
+ <meta charset="utf-8">
+    <!--StyleSheet Source: https://bootswatch.com/pulse/-->
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen">
+    <!--Icons source: https://ionicons.com/-->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <title>CRC Card Builder</title>
+
+</head>
+
+<body>
+
+<h1>CRC Card Builder Page</h1>
+
+<h2 id="Header2" >CRC Card 1</h2>
+
+	<table id="CRCCard" style="width:58%" align="center">
+	  <tr>
+		    <th id="CRCCard" width = "12%" >
+		        Card Name:
+		    </th>
+		          <td id="CRCCard">
+		              <input length="40" name="class_name" size="85" tabindex="1">
+		          </td>
+	  </tr>
+	  <tr>
+		    <th id="CRCCard" >
+          Superclasses:
+        </th>
+          <td id="CRCCard">
+		          <input length="40" name="superclasses" size="85" tabindex="1">
+		      </td>
+	  </tr>
+	  <tr>
+		    <th id="CRCCard">Subclasses: </th>
+          <td id="CRCCard">
+		          <input length="40" name="subclasses" size="85" tabindex="1">
+		      </td>
+	  </tr>
+    <tr>
+        <th id="CRCCard" style="width:50%">Responsibilities</th>
+        <th id="CRCCard" style="width:50%">Collaborators</th>
+    </tr>
+
+	</table>
+
+</body>
+</html>
