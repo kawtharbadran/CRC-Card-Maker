@@ -64,6 +64,15 @@
     //input has to be a number and has to be less than 20 cards
     function checkIfValid() {
         var txtCardNum = document.getElementById("CardNum");
-     //   if ( txtCardNum.value)
+        if (isValidNumber(txtCardNum.value) == false) {
+            alert("Please enter a valid number.");
+        }
+        else if (txtCardNum.value > 20) {
+            alert("Please enter a number less than 20.")
+        }
+    }
+
+    function isValidNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
     }
 </script>
