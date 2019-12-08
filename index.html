@@ -12,28 +12,28 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder</div>
-       
+
     </nav>
     <div class="jumbotron" style="text-align:center;">
         <h1 class="my-4">Hello!</h1>
         <p class="lead">You can build up to 20 CRC cards. Happy card building!</p>
         <hr class="my-4">
-        <div class="form-group">
-            <div>
-                <label for="CardNum">Please enter the number of CRC cards you would like. </label>
-                <input type="text" class="form-control" placeholder="your number..." id="CardNum">
-            </div>
-        </div>
+        <form>
+          <div class="form-group">
+              <div>
+                  <label for="CardNum">Please enter the number of CRC cards you would like. </label>
+                  <input type="number" min="1" max="20" class="form-control" placeholder="your number..." id="CardNum">
+              </div>
+          </div>
 
-        <div>
-            <div class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Create Cards</a>
-            </div>
+          <div>
+          <button name="mysubmitbutton" id="mysubmitbutton" type="submit" class="btn btn-primary btn-lg">Create Cards</button>
         </div>
-        <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
-            <a href="#"></a>
-            <ion-icon name="help-circle" size="large"></ion-icon>
-        </span>
+          <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
+              <a href="#"></a>
+              <ion-icon name="help-circle" size="large"></ion-icon>
+          </span>
+      </form>
     </div>
 </body>
 
