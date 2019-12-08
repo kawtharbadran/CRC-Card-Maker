@@ -18,17 +18,17 @@
         <h1 class="my-4">Hello!</h1>
         <p class="lead">You can build up to 20 CRC cards. Happy card building!</p>
         <hr class="my-4">
-        <form>
+        <form action="CRCBuilderPage.html" method="get">
           <div class="form-group">
               <div>
                   <label for="CardNum">Please enter the number of CRC cards you would like. </label>
-                  <input type="number" min="1" max="20" class="form-control" placeholder="your number..." id="CardNum">
+                  <input type="number" min="1" max="20" class="form-control" name="number" placeholder="your number..." id="CardNum" required>
               </div>
           </div>
 
           <div>
-          <button name="mysubmitbutton" id="mysubmitbutton" type="submit" class="btn btn-primary btn-lg">Create Cards</button>
-        </div>
+            <button type="submit" value="submit" id="mysubmitbutton" class="btn btn-primary btn-lg">Create Cards</button>
+          </div>
             <a HREF="HelpPage.html">
             <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
             <ion-icon name="help-circle" size="large"></ion-icon>
