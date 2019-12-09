@@ -9,7 +9,11 @@ border: 1px solid black;
 padding: 15px;
 font-size:1.1rem;
 }
-
+#addIcon{
+        display:inline-block;
+        margin-right:17%;
+        float:right;
+    }
 h2 {
   padding: 25px;
 }
@@ -34,9 +38,9 @@ h2 {
 
 <h2 align="center" >CRC Card 1</h2>
 
-	<table id="CRCCard" style="width:58%" align="center">
+	<table id="CRCCard" style="width:68%" align="center">
 	  <tr>
-		    <th id="CRCCard" width = "25%" >
+		    <th id="CRCCard" width = "20%" >
 		        Card Name:
 		    </th>
 		          <td id="CRCCard">
@@ -44,17 +48,25 @@ h2 {
 		          </td
 		  </tr>
     </table>
-    <table id="CRCCard" style="width:58%" align="center">
+    <table id="CRCCard" style="width:68%" align="center">
     <tr>
 		    <th id="CRCCard" width="20%">
           Superclasses:
         </th>
           <td id="CRCCard">
 		          <input>
+              <a>
+                <span id="addIcon" data-toggle="popover" data-placement="top" title="Add" role="button">
+               <ion-icon name="add-circle" size="large"></ion-icon>
+              </a>
 		      </td>
 		    <th id="CRCCard" width="20%">Subclasses: </th>
           <td id="CRCCard">
 		          <input>
+              <a>
+                <span id="addIcon" data-toggle="popover" data-placement="top" title="Add" role="button">
+               <ion-icon name="add-circle" size="large"></ion-icon>
+              </a>
 		      </td>
 	  </tr>
     <tr>
@@ -63,12 +75,20 @@ h2 {
         </th>
           <td id="CRCCard">
               <input>
-          </td>
+          <a>
+            <span id="addIcon" data-toggle="popover" data-placement="top" title="Add" role="button">
+           <ion-icon name="add-circle" size="large"></ion-icon>
+          </a>
+            </td>
         <th id="CRCCard" width="20%">
           Collaborators:
         </th>
           <td id="CRCCard">
               <input>
+              <a>
+                <span id="addIcon" data-toggle="popover" data-placement="top" title="Add" role="button">
+               <ion-icon name="add-circle" size="large"></ion-icon>
+              </a>
           </td>
     </tr>
     </table>
