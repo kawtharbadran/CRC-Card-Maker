@@ -22,12 +22,14 @@ div.block{
   overflow:hidden;
   margin-left: auto;
 	margin-right: auto;
-	max-width: 900px;
+	max-width: 1100px;
 	float: none;
 
 }
 div.block label{
-  width:100px;
+  font-size:1.05rem;
+  width:120px;
+  padding-right: 20px;
   display:block;
   float:center;
   text-align:left;
@@ -37,6 +39,24 @@ div.block label{
 div.block .input{
   margin-left:4px;
   float:left;
+}
+
+section {
+
+  overflow:hidden;
+  margin-left: auto;
+	margin-right: auto;
+	max-width: 1100px;
+	float: none;
+}
+div#one {
+  padding: 20px;
+    width: 50%;
+    float: left;
+}
+div#two {
+  padding: 20px;
+    margin-left: 50%;
 }
 </style>
  <meta charset="utf-8">
@@ -63,7 +83,7 @@ div.block .input{
 		        Card Name:
     </label>
 		          <label>
-		              <input size="85">
+		              <input size="95">
 		          </label>
     </div>
     <div id="CRCCard" class="block">
@@ -71,7 +91,7 @@ div.block .input{
               Superclasses:
       </label>
                 <label>
-                    <input size="65">
+                    <input size="75">
                 </label>
       </div>
       <div id="CRCCard" class="block">
@@ -79,25 +99,25 @@ div.block .input{
                 Subclasses:
         </label>
                   <label>
-                      <input size="65">
+                      <input size="75">
                   </label>
         </div>
-        <div id="CRCCard" class="block">
+        <section>
+        <div id="one" class="block">
           <label>
                   Responsibilities:
           </label>
-                    <label>
-                        <input size="65">
-                    </label>
-          </div>
-          <div id="CRCCard" class="block">
+
+              <input size="45">
+            </div>
+        <div id="two" class="block">
             <label>
                     Collaborators:
             </label>
-                      <label>
-                          <input size="65">
-                      </label>
+                          <input size="45">
+
             </div>
+          </section>
 
 </body>
 </html>
