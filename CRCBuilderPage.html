@@ -5,9 +5,9 @@
 <style>
 
 #CRCCard{
-border: 1px solid black;
+
 padding: 20px;
-font-size:1.1rem;
+font-size:1.05rem;
 }
 #addIcon{
         display:inline-block;
@@ -18,17 +18,21 @@ h2 {
   padding: 15px;
 }
 div.block{
+  border: 1px solid black;
   overflow:hidden;
   margin-left: auto;
 	margin-right: auto;
 	max-width: 900px;
 	float: none;
+
 }
 div.block label{
   width:100px;
   display:block;
-  float:left;
+  float:center;
   text-align:left;
+  display:inline-block;
+
 }
 div.block .input{
   margin-left:4px;
@@ -59,9 +63,41 @@ div.block .input{
 		        Card Name:
     </label>
 		          <label>
-		              <input size="90" name="class_name">
+		              <input size="85">
 		          </label>
     </div>
+    <div id="CRCCard" class="block">
+      <label>
+              Superclasses:
+      </label>
+                <label>
+                    <input size="65">
+                </label>
+      </div>
+      <div id="CRCCard" class="block">
+        <label>
+                Subclasses:
+        </label>
+                  <label>
+                      <input size="65">
+                  </label>
+        </div>
+        <div id="CRCCard" class="block">
+          <label>
+                  Responsibilities:
+          </label>
+                    <label>
+                        <input size="65">
+                    </label>
+          </div>
+          <div id="CRCCard" class="block">
+            <label>
+                    Collaborators:
+            </label>
+                      <label>
+                          <input size="65">
+                      </label>
+            </div>
 
 </body>
 </html>
