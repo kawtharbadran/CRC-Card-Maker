@@ -11,6 +11,14 @@
     display: none;
   }
 }
+
+#centerBar {
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff;
+    margin-right:auto;
+    margin-left:3%
+}
 #CRCCard{
 
 padding: 20px;
@@ -61,6 +69,16 @@ div#two {
   padding: 20px;
     margin-left: 50%;
 }
+
+#helpIcon {
+
+font-size: 32px;
+color: white;
+padding: 0px;
+margin: 0px;
+right: 3%;
+position: absolute;
+}
 </style>
  <meta charset="utf-8">
     <!--StyleSheet Source: https://bootswatch.com/pulse/-->
@@ -75,7 +93,13 @@ div#two {
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder Page</div>
+        <div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder Page
+          <a target="_blank" rel="noopener noreferrer" HREF="HelpPage.html">
+          <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
+          <ion-icon name="help-circle" size="large"></ion-icon>
+          </span>
+          </a>
+        </div>
 
     </nav>
 
