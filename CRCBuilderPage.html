@@ -92,7 +92,7 @@ div#two {
       </label>
       <div>
       <input size="85">
-        <button type="button" class="add_field_button"><b>+</b></button>
+        <button type="button" class="add_field_button1"><b>+</b></button>
 
         </div>
       </div>
@@ -102,7 +102,7 @@ div#two {
         </label>
         <div>
         <input size="85">
-          <button type="button" class="add_field_button"><b>+</b></button>
+          <button type="button" class="add_field_button2"><b>+</b></button>
 
           </div>
         </div>
@@ -113,9 +113,11 @@ div#two {
                   Responsibilities:
           </label>
 
-              <div>
+
+                <div class="input_fields_wrap3">
               <input size="45">
-                <button type="button" class="add_field_button"><b>+</b></button>
+                <button type="button" class="add_field_button3"><b>+</b></button>
+                
 
                 </div>
             </div>
@@ -123,9 +125,9 @@ div#two {
             <label>
                     Collaborators:
             </label>
-            <div class="input_fields_wrap">
+            <div class="input_fields_wrap4">
                <input size="45">
-                <button type="button" class="add_field_button"><b>+</b></button>
+                <button type="button" class="add_field_button4"><b>+</b></button>
 
 
             </div>
@@ -134,8 +136,8 @@ div#two {
             <script type="text/javascript">
                 $(document).ready(function() {
                     var max_fields      = 10; //maximum input boxes allowed
-                    var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
-                    var add_button      = $(".add_field_button"); //Add button ID
+                    var wrapper   		= $(".input_fields_wrap4"); //Fields wrapper
+                    var add_button      = $(".add_field_button4"); //Add button ID
 
                     var x = 1; //initlal text box count
                     $(add_button).click(function(e){ //on add input button click
