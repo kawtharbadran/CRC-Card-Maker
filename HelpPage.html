@@ -2,17 +2,68 @@
 <html>
 <head><link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen"></head>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
     <div class="collapse navbar-collapse" id="centerBar2" style="" \>CRC Builder Help Center</div>
 </nav>
 
 <h5 class = "heading" align="center">Welcome to our CRC builder help center! </h5>
 <h5 class = "heading2" align="center">Below you fill find some topics to help you with our site. </h5>
 
-<p> </p>
+<table class="table table-hover">
+    <thead>
+    <tr class="table-active">
+        <th scope="col">CRC Card Fields</th>
+        <th scope="col">Description</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-default">
+        <th scope="row">Card Name</th>
+        <td>The card name field cannot be left blank!</td>
+
+    </tr>
+
+    <tr class="table-default">
+        <th scope="row">Superclasses</th>
+        <td>A Superclass is a class from which another class inherits. You may leave this field blank
+            if you do not have any superclasses..</td>
+
+    </tr>
+    <tr class="table-default">
+        <th scope="row">Subclasses</th>
+        <td>A Subclass is a class that inherits from one or more classes. You may leave this field blank
+            if you do not have any subclasses.</td>
+
+    </tr>
+    <tr class="table-default">
+        <th scope="row">Responsibilities</th>
+        <td>A Responsibility is anything that the class knows or does. Ideally, you should not leave this
+        field blank.</td>
+
+    </tr>
+    <tr class="table-default">
+        <th scope="row">Collaborators</th>
+        <td>A Collaborator is another class that is used to get information for, or perform actions for
+            the class at hand. </td>
+
+    </tr>
+    <tr class="table-default">
+        <th scope="row">Submit Button</th>
+        <td>This button will take you to another page from where you will be able to print your
+        CRC cards.</td>
+
+
+    </tbody>
+</table>
+
+<p>For more information on how to build CRC cards, please visit
+    <a href="http://lore.ua.ac.be/Teaching/SE3BAC/CRCIntro.pdf" target="_blank">this website!</a> </p>
 </body>
 </html>
 
@@ -31,4 +82,8 @@
     line-height: 40px;
     font-size: 25px;
     }
+
+    ion-icon {
+  font-size: 32px;
+}
 </style>
