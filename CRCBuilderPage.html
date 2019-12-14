@@ -4,6 +4,13 @@
 
 <style>
 
+
+@page { size: auto;  margin: 0mm; }
+@media print {
+  #printPageButton, #addIcon{
+    display: none;
+  }
+}
 #CRCCard{
 
 padding: 20px;
@@ -215,6 +222,6 @@ div#two {
                     </script>
                   </div>
                 </section>
-
+            <input type=button id="printPageButton" name="print" value="Print" onclick="window.print()"></button>
         </body>
 </html>
