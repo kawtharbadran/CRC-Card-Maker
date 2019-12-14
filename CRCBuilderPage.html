@@ -10,6 +10,11 @@
   #printPageButton, #addIcon{
     display: none;
   }
+  input, textarea {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
 }
 #CRCCard{
 
@@ -79,14 +84,14 @@ div#two {
 
     </nav>
 
-<h2 align="center" >CRC Card 1</h2>
+<h2 align="center" id="card1_name">CRC Card 1</h2>
 
 	<div id="CRCCard" class="block">
 	  <label>
 		        Card Name:
     </label>
 		          <label>
-		              <input size="75">
+		              <input size="75" onkeyup=editHeader(this)>
 		          </label>
     </div>
     <div id="CRCCard" class="block">
@@ -222,6 +227,12 @@ div#two {
                     </script>
                   </div>
                 </section>
+            <script typep="text/javascript">
+              function editHeader(input){
+	               var elementValue = input.value;
+	               document.getElementById("card1_name").innerHTML = elementValue;
+               }
+            </script>
             <input type=button id="printPageButton" name="print" value="Print" onclick="window.print()"></button>
         </body>
 </html>
