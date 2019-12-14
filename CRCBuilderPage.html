@@ -90,21 +90,65 @@ div#two {
       <label>
               Superclasses:
       </label>
-      <div>
+        <div class="input_fields_wrap1">
       <input size="85">
         <button type="button" class="add_field_button1"><b>+</b></button>
 
         </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
+        <script async="" src="https://www.sanwebe.com/wp-content/cache/minify/90c30.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var max_fields      = 10; //maximum input boxes allowed
+                var wrapper   		= $(".input_fields_wrap1"); //Fields wrapper
+                var add_button      = $(".add_field_button1"); //Add button ID
+
+                var x = 1; //initlal text box count
+                $(add_button).click(function(e){ //on add input button click
+                  e.preventDefault();
+                  if(x < max_fields){ //max input box allowed
+                    x++; //text box increment
+                    $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                  }
+                });
+
+                $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                  e.preventDefault(); $(this).parent('div').remove(); x--;
+                })
+                });
+                </script>
       </div>
       <div id="CRCCard" class="block">
         <label>
                 Subclasses:
         </label>
-        <div>
+        <div class="input_fields_wrap2">
         <input size="85">
           <button type="button" class="add_field_button2"><b>+</b></button>
 
           </div>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
+          <script async="" src="https://www.sanwebe.com/wp-content/cache/minify/90c30.js" type="text/javascript"></script>
+          <script type="text/javascript">
+              $(document).ready(function() {
+                  var max_fields      = 10; //maximum input boxes allowed
+                  var wrapper   		= $(".input_fields_wrap2"); //Fields wrapper
+                  var add_button      = $(".add_field_button2"); //Add button ID
+
+                  var x = 1; //initlal text box count
+                  $(add_button).click(function(e){ //on add input button click
+                    e.preventDefault();
+                    if(x < max_fields){ //max input box allowed
+                      x++; //text box increment
+                      $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                    }
+                  });
+
+                  $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                    e.preventDefault(); $(this).parent('div').remove(); x--;
+                  })
+                  });
+                  </script>
         </div>
         <section>
         <div id="one" class="block">
@@ -117,9 +161,29 @@ div#two {
                 <div class="input_fields_wrap3">
               <input size="45">
                 <button type="button" class="add_field_button3"><b>+</b></button>
-                
-
                 </div>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
+                <script async="" src="https://www.sanwebe.com/wp-content/cache/minify/90c30.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        var max_fields      = 10; //maximum input boxes allowed
+                        var wrapper   		= $(".input_fields_wrap3"); //Fields wrapper
+                        var add_button      = $(".add_field_button3"); //Add button ID
+
+                        var x = 1; //initlal text box count
+                        $(add_button).click(function(e){ //on add input button click
+                          e.preventDefault();
+                          if(x < max_fields){ //max input box allowed
+                            x++; //text box increment
+                            $(wrapper).append('<div><input type="text" size="45" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                          }
+                        });
+
+                        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                          e.preventDefault(); $(this).parent('div').remove(); x--;
+                        })
+                        });
+                        </script>
             </div>
         <div id="two" class="block">
             <label>
