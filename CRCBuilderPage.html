@@ -3,19 +3,6 @@
 <head>
 
 <style>
-
-
-@page { size: auto;  margin: 0mm; }
-@media print {
-  #printPageButton, #addIcon, #remove_field{
-    display: none;
-  }
-  input, textarea {
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-  }
-}
 #CRCCard{
 
 padding: 20px;
@@ -66,6 +53,19 @@ div#two {
   padding: 20px;
     margin-left: 50%;
 }
+@page { size: auto;  margin: 0mm; }
+
+@media print {
+  #printPageButton, #addIcon, #remove_field{
+    display: none;
+  }
+  input, textarea {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
 </style>
  <meta charset="utf-8">
     <!--StyleSheet Source: https://bootswatch.com/pulse/-->
@@ -80,7 +80,7 @@ div#two {
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder Page</div>
+        <a href="index.html"><div class="navbar-brand" id="centerBar" style="" \>CRC Card Builder Page</div></a>
 
     </nav>
 
@@ -116,7 +116,7 @@ div#two {
                   e.preventDefault();
                   if(x < max_fields){ //max input box allowed
                     x++; //text box increment
-                    $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                    $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" id="remove_field" class="remove_field">Remove</a></div>'); //add input box
                   }
                 });
 
@@ -148,7 +148,7 @@ div#two {
                     e.preventDefault();
                     if(x < max_fields){ //max input box allowed
                       x++; //text box increment
-                      $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                      $(wrapper).append('<div><input type="text" size="85" name="mytext[]"/><a href="#" id="remove_field" class="remove_field">Remove</a></div>'); //add input box
                     }
                   });
 
@@ -183,7 +183,7 @@ div#two {
                           e.preventDefault();
                           if(x < max_fields){ //max input box allowed
                             x++; //text box increment
-                            $(wrapper).append('<div><input type="text" size="45" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                            $(wrapper).append('<div><input type="text" size="45" name="mytext[]"/><a href="#" id="remove_field" class="remove_field">Remove</a></div>'); //add input box
                           }
                         });
 
