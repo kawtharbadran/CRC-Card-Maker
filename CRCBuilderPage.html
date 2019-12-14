@@ -7,7 +7,7 @@
 
 @page { size: auto;  margin: 0mm; }
 @media print {
-  #printPageButton, #addIcon{
+  #printPageButton, #addIcon, #remove_field{
     display: none;
   }
   input, textarea {
@@ -216,7 +216,7 @@ div#two {
                       e.preventDefault();
                       if(x < max_fields){ //max input box allowed
                         x++; //text box increment
-                        $(wrapper).append('<div><input type="text" size="45" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                        $(wrapper).append('<div><input type="text" size="45" name="mytext[]"/><a href="#" class="remove_field" id="remove_field">Remove</a></div>'); //add input box
                       }
                     });
 
@@ -227,12 +227,14 @@ div#two {
                     </script>
                   </div>
                 </section>
-            <script typep="text/javascript">
+<!-- TODO: NEED TO UPDATE THIS SO IT WORKS DYNAMICALLY WITH ALL ADDED CRC CARDS -->
+            <script type="text/javascript">
               function editHeader(input){
 	               var elementValue = input.value;
 	               document.getElementById("card1_name").innerHTML = elementValue;
                }
             </script>
+<!-- -->
             <input type=button id="printPageButton" name="print" value="Print" onclick="window.print()"></button>
         </body>
 </html>
