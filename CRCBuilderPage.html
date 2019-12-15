@@ -125,28 +125,21 @@
             var rowCount = (e.currentTarget.parentElement.children.length) - 1;
 
             if (rowCount < max_fields) { //max input box allowed
-               
-                $(`#${parentID}`).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field"><ion-icon class="remove-circle" name="remove-circle"></ion-icon></a></div>'); //add input box                            
-                
+
+                $(`#${parentID}`).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field"><ion-icon class="remove-circle" name="remove-circle"></ion-icon></a></div>'); //add input box
+
                 $(`#${parentID}`).on("click", ".remove_field", function (e) { //user click on remove text
                     e.preventDefault(); $(this).parent('div').remove();
                 });
             }
         });
     }
-    
-    function editHeader(input) {
-        var elementValue = input.value;
-        var elementID = input.parentElement.id;
-        document.getElementById(`${elementID}`).innerHTML = elementValue;
-    }
-    
-
+  
     $(document).ready(function () {
 
-        
+
     });
-    
+
 </script>
 
 <style>
