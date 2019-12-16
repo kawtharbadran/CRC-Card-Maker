@@ -5,6 +5,7 @@
     <!--StyleSheet Source: https://bootswatch.com/pulse/-->
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Icons source: https://ionicons.com/-->
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
@@ -25,6 +26,9 @@
     </nav>
     <div class="jumbotron" style="margin:0px;padding-top:30px;">
         <div class="card bg-primary mb-3">
+          <div class="icon-bar">
+                <a target="_blank" rel="noopener noreferrer"HREF="HelpPage.html" class="question"><i class= "fa fa-question-circle"></i></a>
+              </div>
             <div class="card-body" id="bodyForAllCards">
                 <!--Cards will all go in here-->
             </div>
@@ -134,7 +138,7 @@
             }
         });
     }
-  
+
     $(document).ready(function () {
 
 
@@ -237,5 +241,29 @@
     .fieldName{
         text-align:center;
     }
+    .icon-bar {
+     position: fixed;
+     top: 82%;
+     right: 0px;
+     -webkit-transform: translateY(-50%);
+     -ms-transform: translateY(-50%);
+     transform: translateY(-50%);
+   }
 
+   .icon-bar a {
+     display: block;
+     text-align: center;
+     padding: 16px;
+     transition: all 0.3s ease;
+     color: white;
+     font-size: 20px;
+   }
+
+   .icon-bar a:hover {
+     background-color: #337AFF;
+   }
+
+   .question {
+     background:black ;
+   }
 </style>
