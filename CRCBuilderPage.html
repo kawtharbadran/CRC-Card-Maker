@@ -5,7 +5,12 @@
     <!--StyleSheet Source: https://bootswatch.com/pulse/-->
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
+    <script src="https://www.sanwebe.com/wp-content/cache/minify/90c30.js" type="text/javascript"></script>
     <!--Icons source: https://ionicons.com/-->
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
@@ -24,24 +29,67 @@
             </a>
         </div>
     </nav>
-    <div class="jumbotron" style="margin:0px;padding-top:30px;">
+    <div class="jumbotron" style="margin:0px;padding-top:5px;padding-bottom:10px;">
+        <div style="text-align:center; padding-top: 0px;margin:5px;margin-bottom:10px;">
+            <button type=button id="topAddCardBtn" name="" class="btn btn-info AddCardBtn" style="margin-right:10px;" data-target="#cannotAddCardDialog">Add Card</button>
+            <button type=button id="printPageButton" name="print" class="btn btn-info" onclick="window.print()">Print</button>
+        </div>
         <div class="card bg-primary mb-3">
-          <div class="icon-bar">
-                <a target="_blank" rel="noopener noreferrer"HREF="HelpPage.html" class="question"><i class= "fa fa-question-circle"></i></a>
-              </div>
+            <div class="icon-bar">
+                <a target="_blank" rel="noopener noreferrer" HREF="HelpPage.html" class="question"><i class="fa fa-question-circle"></i></a>
+            </div>
             <div class="card-body" id="bodyForAllCards">
                 <!--Cards will all go in here-->
             </div>
         </div>
-        <div style="text-align:center; padding-top: 10px;">
-            <button type=button id="printPageButton" name="print" class="btn btn-primary btn-lg" onclick="window.print()">Print</button>
+        <div style="text-align:center; padding-top:10px;padding-bottom: 0px;">
+            <button type=button id="topAddCardBtn" name="" class="btn btn-info btn-lg AddCardBtn" style="margin-right:10px;" data-target="#cannotAddCardDialog">Add Card</button>
+            <button type=button id="printPageButton" name="print" class="btn btn-info btn-lg" onclick="window.print()">Print</button>
         </div>
     </div>
+
+    <div class="modal" role="dialog" id="ConfirmDeleteDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Card</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this card? Once deleted, it will be lost forever.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnDeleteConfirmed">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" role="dialog" id="cannotAddCardDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Can't Add Card</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You already have 20 cards, which is the maximum.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="" id="cardSelectedForDelete" />
 </body>
+
 </html>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
-<script src="https://www.sanwebe.com/wp-content/cache/minify/90c30.js" type="text/javascript"></script>
 <script type="text/javascript">
 
     window.onload = function () {
@@ -55,12 +103,16 @@
         document.getElementById('userCardNum').innerHTML = data.number; //this gets the number of cards from the url
         for (let i = 0; i < data.number; i++) {
             $('#bodyForAllCards').append(`
-                <div class="card border-secondary mb-3" id="card${i + 1}" style="margin-top:10px;margin-bottom:10px;margin-right:50px;margin-left:50px;" >
+                <div class="card border-secondary mb-3" id="card${i + 1}" style="margin-top:10px;margin-bottom:10px;margin-right:50px;margin-left:50px;">
                     <div class="text-white bg-dark card-header">
-                        CRC Card ${i + 1}
+                        <span style="float:left;">CRC Card ${i + 1}</span>
+                        <span class="CardNameBasedOnInput" id="classNameinHeader_card_${i+1}"></span>
+                        <button type="button" class="btn btn-danger deleteCard" onclick=setValueForCardToDelete(this) data-toggle="modal" data-target="#ConfirmDeleteDialog">
+                            <ion-icon class="trash" name="trash"></ion-icon>
+                        </button>
                     </div>
                     <div class="card-body" style="margin:0px;padding:0px;">
-                        <table class="table-striped table-bordered" style="width:100%;">
+                        <table class="table-striped table-bordered" >
 
                             <tbody>
                                 <tr>
@@ -69,7 +121,7 @@
                                     </td>
                                     <td colspan="3">
                                         <div class="CRCCard block" id="name_Card_${i + 1}">
-                                            <input size="75" style="width:90%;" onkeyup=editHeader(this)>
+                                            <input onkeyup=editHeader(this)>
                                         </div>
                                     </td>
                                 </tr>
@@ -79,7 +131,7 @@
                                     </td>
                                     <td colspan="3">
                                         <div class="CRCCard block" id="superClasses_Card_${i + 1}">
-                                                <input size="85" style="width:90%;">
+                                                <input>
                                                 <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
@@ -90,7 +142,7 @@
                                     </td>
                                     <td colspan="3">
                                         <div class="CRCCard block" id="subClasses_Card_${i + 1}">
-                                            <input size="85" style="width:90%;">
+                                            <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
@@ -101,7 +153,7 @@
                                     </td>
                                     <td colspan="1">
                                         <div class="CRCCard block input_fields_wrap3" id="responsibilities_Card_${i + 1}">
-                                            <input size="45">
+                                            <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
@@ -110,7 +162,7 @@
                                     </td>
                                     <td colspan="1">
                                         <div class="CRCCard block input_fields_wrap4" id="collaborators_Card_${i + 1}">
-                                            <input size="45">
+                                            <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
@@ -121,16 +173,33 @@
                 </div>
             `);
         }
-        var max_fields = 10;                        //maximum input boxes allowed
 
         $('.add_field_button').click(function (e) { //on add input button click
+            var max_fields = 10;                        //maximum input boxes allowed
             e.preventDefault();
             var parentID = e.currentTarget.parentElement.id;
             var rowCount = (e.currentTarget.parentElement.children.length) - 1;
 
             if (rowCount < max_fields) { //max input box allowed
+               
+                $(`#${parentID}`).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field"><ion-icon class="remove-circle" name="remove-circle"></ion-icon></a></div>'); //add input box                            
+                
+                $(`#${parentID}`).on("click", ".remove_field", function (e) { //user click on remove text
+                    e.preventDefault(); $(this).parent('div').remove();
+                });
+            }
+        });
+    }
+    function reCreateAddFieldHandler() {
 
-                $(`#${parentID}`).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field"><ion-icon class="remove-circle" name="remove-circle"></ion-icon></a></div>'); //add input box
+        $('.add_field_button').on('click', function (e) { //on add input button click
+            e.preventDefault();
+            var parentID = e.currentTarget.parentElement.id;
+            var rowCount = (e.currentTarget.parentElement.children.length) - 1;
+            var max_fields = 10;                        //maximum input boxes allowed
+            if (rowCount < max_fields) { //max input box allowed
+
+                $(`#${parentID}`).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field"><ion-icon class="remove-circle" name="remove-circle"></ion-icon></a></div>'); //add input box                            
 
                 $(`#${parentID}`).on("click", ".remove_field", function (e) { //user click on remove text
                     e.preventDefault(); $(this).parent('div').remove();
@@ -138,12 +207,135 @@
             }
         });
     }
+    function editHeader(input) {
+        var elementValue = input.value;
+        var thisCardID = input.parentElement.id;
+        var IDpieces = thisCardID.split('_');
+        var thisID = IDpieces[2];
+        var stringID = `classNameinHeader_card_${thisID}`;
+        document.getElementById(stringID).innerHTML = elementValue;
+    }
+
+    function setValueForCardToDelete(input) {
+        var parentID = input.parentElement.children[1].id;
+        var IDpieces = parentID.split('_');
+        var cardID = IDpieces[2];
+        $('#cardSelectedForDelete').val(cardID);
+    }
+
+    $('#btnDeleteConfirmed').on('click', function () {
+        var cardIDToDelete = $('#cardSelectedForDelete').val();
+        var entireCard = $(`#card${cardIDToDelete}`);
+        entireCard.remove();
+        $('.close').click(); 
+        //re-number cards underneath the one that just got deleted.
+        //get the children of the big body that containa all the cards and loop to update the numbers in the headers of each a card
+        var parent = document.getElementById("bodyForAllCards");
+        var cardsCount = document.getElementById("bodyForAllCards").childElementCount;
+        for (let i = 0; i < cardsCount; i++) {
+            parent.children[i].children[0].children[0].innerHTML = `CRC Card ${i + 1}`;
+        }
+    });
+
+    $('.AddCardBtn').on('click', function () {
+
+        //get card count and check if adding will not exceed 20. otherwise add a card to the bottom
+        var parent = document.getElementById("bodyForAllCards");
+        var cardsCount = document.getElementById("bodyForAllCards").childElementCount;
+        if (cardsCount == 20) {
+            var btn = document.getElementsByClassName("AddCardBtn");   // Get the first <h1> element in the document
+            for (let i = 0; i < btn.length; i++) {
+                var att = document.createAttribute("data-toggle");       // Create a "class" attribute
+                att.value = "modal";    
+                btn[i].setAttributeNode(att);
+            }
+        }
+        else if (cardsCount < 20) {
+            var btn = document.getElementsByClassName("AddCardBtn");   // Get the first <h1> element in the document
+            for (let i = 0; i < btn.length; i++) {
+                var att = document.createAttribute("data-toggle");       // Create a "class" attribute
+                btn[i].removeAttribute("data-toggle");
+            }
+            $('#bodyForAllCards').append(`
+                <div class="card border-secondary mb-3" id="card${cardsCount + 1}" style="margin-top:10px;margin-bottom:10px;margin-right:50px;margin-left:50px;">
+                    <div class="text-white bg-dark card-header">
+                        <span style="float:left;">CRC Card ${cardsCount + 1}</span>
+                        <span class="CardNameBasedOnInput" id="classNameinHeader_card_${cardsCount + 1}"></span>
+                        <button type="button" class="btn btn-danger deleteCard" onclick=setValueForCardToDelete(this) data-toggle="modal" data-target="#ConfirmDeleteDialog">
+                            <ion-icon class="trash" name="trash"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="card-body" style="margin:0px;padding:0px;">
+                        <table class="table-striped table-bordered" >
+
+                            <tbody>
+                                <tr>
+                                    <td class="fieldName">
+                                        Card Name
+                                    </td>
+                                    <td colspan="3">
+                                        <div class="CRCCard block" id="name_Card_${cardsCount + 1}">
+                                            <input onkeyup=editHeader(this) />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" class="fieldName">
+                                        Superclasses
+                                    </td>
+                                    <td colspan="3">
+                                        <div class="CRCCard block" id="superClasses_Card_${cardsCount + 1}">
+                                                <input>
+                                                <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" class="fieldName">
+                                        Subclasses
+                                    </td>
+                                    <td colspan="3">
+                                        <div class="CRCCard block" id="subClasses_Card_${cardsCount + 1}">
+                                            <input>
+                                            <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" class="fieldName">
+                                        Responsibilities
+                                    </td>
+                                    <td colspan="1">
+                                        <div class="CRCCard block input_fields_wrap3" id="responsibilities_Card_${cardsCount + 1}">
+                                            <input>
+                                            <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                        </div>
+                                    </td>
+                                    <td colspan="1" class="fieldName">
+                                        Collaborators
+                                    </td>
+                                    <td colspan="1">
+                                        <div class="CRCCard block input_fields_wrap4" id="collaborators_Card_${cardsCount + 1}">
+                                            <input>
+                                            <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `);
+            $('.add_field_button').unbind("click");
+            reCreateAddFieldHandler();
+        }
+    });
 
     $(document).ready(function () {
 
-
+        
     });
-
+    
 </script>
 
 <style>
@@ -154,7 +346,7 @@
 
     @media print {
 
-        #printPageButton, .add_field_button.addIcon, .remove_field {
+        #printPageButton, .add_field_button.addIcon, .remove_field, .deleteCard, #ConfirmDeleteDialog, a.question, .fa-question-circle, .AddCardBtn, #cannotAddCardDialog {
             display: none;
         }
 
@@ -163,10 +355,19 @@
             box-shadow: none !important;
             outline: none !important;
         }
+
+        table, td {
+            border: 1px solid #6e6e6e;
+        }
+        div.text-white.bg-dark.card-header {
+            color: #6929f9;
+           
+        }
     }
     .CRCCard {
-        padding: 20px;
+        padding: 10px;
         font-size: 1.1rem;
+        max-width: 99%;
     }
 
     #centerBar {
@@ -206,7 +407,6 @@
         div.block label {
             font-size: 1.05rem;
             width: 120px;
-            display: block;
             text-align: left;
             display: inline-block;
         }
@@ -240,30 +440,56 @@
 
     .fieldName{
         text-align:center;
+        padding-left:5px;
+        padding-right:5px;
     }
+
     .icon-bar {
-     position: fixed;
-     top: 82%;
-     right: 0px;
-     -webkit-transform: translateY(-50%);
-     -ms-transform: translateY(-50%);
-     transform: translateY(-50%);
-   }
+        position: fixed;
+        top: 82%;
+        right: 0px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
 
-   .icon-bar a {
-     display: block;
-     text-align: center;
-     padding: 16px;
-     transition: all 0.3s ease;
-     color: white;
-     font-size: 20px;
-   }
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
 
-   .icon-bar a:hover {
-     background-color: #337AFF;
-   }
+            .icon-bar a:hover {
+                background-color: #337AFF;
+            }
 
-   .question {
-     background:black ;
-   }
+    .question {
+        background: black;
+    }
+    .trash {
+        font-size: 1.3rem;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 4px;
+        margin-right: 4px;
+        padding: 0px;
+    }
+
+    .deleteCard {
+        float: right;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 5%;
+    }
+
+    .card-header{
+        margin: 0px;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align:center;
+    }
 </style>
