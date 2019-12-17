@@ -25,24 +25,22 @@
         <div class="navbar-brand" id="centerBar" style="" \>
             CRC Card Builder Page
 
-<span>
-            <a target="_blank" rel="noopener noreferrer" HREF="HelpPage.html">
-                <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
-                    <ion-icon name="help-circle" size="large"></ion-icon>
-                </span>
-            </a>
-
-            <span id="resetIcon" data-toggle="popover" data-placement="top" title="Reset Fields" role="button">
-                <button id="reset" style="background-color:#593196; border-color:#593196; color:white" data-toggle="modal" data-target="#confirmResetDialog">
-                    <ion-icon name="redo" size="small"></ion-icon>
-                </button>
-
+            <span>
+                <a target="_blank" rel="noopener noreferrer" HREF="HelpPage.html">
+                    <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
+                        <ion-icon name="help-circle" size="large"></ion-icon>
+                    </span>
+                </a>
             </span>
-</span>
         </div>
     </nav>
     <div class="jumbotron" style="margin:0px;padding-top:5px;padding-bottom:10px;">
-        <div style="text-align:center; padding-top: 0px;margin:5px;margin-bottom:10px;">
+        <div style="text-align:center;padding-top: 0px;margin:5px;margin-bottom:10px;">
+
+            <button id="reset" class="btn btn-danger" style="margin-right:15px;color:white;" data-toggle="modal" data-target="#confirmResetDialog">
+                Reset Cards
+                <ion-icon name="redo" size="small"></ion-icon>
+            </button>
             <button type=button id="topAddCardBtn" name="" class="btn btn-info AddCardBtn" style="margin-right:10px;" data-target="#cannotAddCardDialog">Add Card</button>
             <button type=button id="printPageButton" name="print" class="btn btn-info" onclick="window.print()">Print</button>
         </div>
@@ -55,6 +53,10 @@
             </div>
         </div>
         <div style="text-align:center; padding-top:10px;padding-bottom: 0px;">
+            <button id="reset" class="btn btn-info btn-lg" style="margin-right:15px;color:white" data-toggle="modal" data-target="#confirmResetDialog">
+                Reset Cards
+                <ion-icon name="redo" size="small"></ion-icon>
+            </button>
             <button type=button id="topAddCardBtn" name="" class="btn btn-info btn-lg AddCardBtn" style="margin-right:10px;" data-target="#cannotAddCardDialog">Add Card</button>
             <button type=button id="printPageButton" name="print" class="btn btn-info btn-lg" onclick="window.print()">Print</button>
         </div>
@@ -122,22 +124,22 @@
 </html>
 
 <script>
-function resetFields(){
-    var inputArray = document.querySelectorAll('input');
-    inputArray.forEach(function (input){
-        input.value = "";
-    });
+    function resetFields() {
+        var inputArray = document.querySelectorAll('input');
+        inputArray.forEach(function (input) {
+            input.value = "";
+        });
 
-    var textAreaArray = document.querySelectorAll('textArea');
-    textAreaArray.forEach(function (textArea){
-        textArea.innerHTML = "";
-    });
+        var textAreaArray = document.querySelectorAll('textArea');
+        textAreaArray.forEach(function (textArea) {
+            textArea.innerHTML = "";
+        });
 
-    //clear card headers
-    $('.CardNameBasedOnInput').each(function () {
-        this.innerHTML = "";
-    });
-}
+        //clear card headers
+        $('.CardNameBasedOnInput').each(function () {
+            this.innerHTML = "";
+        });
+    }
 </script>
 
 <script type="text/javascript">
@@ -156,7 +158,7 @@ function resetFields(){
                 <div class="card border-secondary mb-3" id="card${i + 1}" style="margin-top:10px;margin-bottom:10px;margin-right:50px;margin-left:50px;">
                     <div class="text-white bg-dark card-header">
                         <span style="float:left;">CRC Card ${i + 1}</span>
-                        <span class="CardNameBasedOnInput" id="classNameinHeader_card_${i+1}"></span>
+                        <span class="CardNameBasedOnInput" id="classNameinHeader_card_${i + 1}"></span>
                         <button type="button" class="btn btn-danger deleteCard" onclick=setValueForCardToDelete(this) data-toggle="modal" data-target="#ConfirmDeleteDialog">
                             <ion-icon class="trash" name="trash"></ion-icon>
                         </button>
@@ -171,7 +173,7 @@ function resetFields(){
                                     </td>
                                     <td colspan="3">
                                         <div class="CRCCard block classNameDiv" id="name_Card_${i + 1}">
-                                            <input onkeyup=editHeader(this) onchange=editHeader(this)>
+                                            <input onkeyup=editHeader(this) style="margin-left:4%;margin-right:4%;" onchange=editHeader(this)>
                                         </div>
                                     </td>
                                 </tr>
@@ -182,7 +184,7 @@ function resetFields(){
                                     <td colspan="3">
                                         <div class="CRCCard block superClassesDiv" id="superClasses_Card_${i + 1}">
                                                 <input>
-                                                <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                                <ion-icon class="add_field_button addIcon" style="margin-left:4%;margin-right:4%;" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
                                 </tr>
@@ -357,7 +359,7 @@ function resetFields(){
                                     <td colspan="3">
                                         <div class="CRCCard block superClassesDiv" id="superClasses_Card_${cardsCount + 1}">
                                                 <input>
-                                                <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                                <ion-icon class="add_field_button addIcon" style="margin-left:4%;margin-right:4%;" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
                                 </tr>
@@ -368,7 +370,7 @@ function resetFields(){
                                     <td colspan="3">
                                         <div class="CRCCard block subClassesDiv" id="subClasses_Card_${cardsCount + 1}">
                                             <input>
-                                            <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
+                                            <ion-icon class="add_field_button addIcon" style="margin-left:4%;margin-right:4%;" name="add-circle"></ion-icon>
                                         </div>
                                     </td>
                                 </tr>
@@ -417,7 +419,7 @@ function resetFields(){
 
     @media print {
 
-        #printPageButton, .add_field_button.addIcon, .remove_field, .deleteCard, #ConfirmDeleteDialog, a.question, .fa-question-circle, .AddCardBtn, #cannotAddCardDialog {
+        #printPageButton, .add_field_button.addIcon, .remove_field, .deleteCard, #ConfirmDeleteDialog, a.question, .fa-question-circle, .AddCardBtn, #cannotAddCardDialog, #confirmResetDialog, #reset {
             display: none;
         }
 
@@ -430,11 +432,13 @@ function resetFields(){
         table, td {
             border: 1px solid #6e6e6e;
         }
+
         div.text-white.bg-dark.card-header {
             color: #6929f9;
-
         }
     }
+
+
     .CRCCard {
         padding: 10px;
         font-size: 1.1rem;
@@ -448,13 +452,15 @@ function resetFields(){
         margin-right: auto;
         margin-left: 3%
     }
+
     .addIcon {
         display: inline-block;
         float: right;
         cursor: pointer;
         font-size: 1.5rem;
-        color:green;
+        color: green;
     }
+
     #helpIcon {
         font-size: 32px;
         color: white;
@@ -463,15 +469,27 @@ function resetFields(){
         right: 3%;
         position: absolute;
     }
+
+    .add_field_button {
+        margin:5px;
+        margin-left:2.5%;
+        margin-right:2.5%;
+
+    }
+     .remove_field{
+         margin:5px; margin-left:2%;margin-right:2.2%;
+     }
+
     #resetIcon {
-      border-radius: 80%;
-      font-size: 22px;
+        border-radius: 80%;
+        font-size: 22px;
         color: white;
         padding: 0px;
         margin: 0px;
         right: 6%;
         position: absolute;
     }
+
     h2 {
         padding: 15px;
     }
@@ -513,15 +531,17 @@ function resetFields(){
         padding: 20px;
     }
 
-    .remove-circle{
+    .remove-circle {
         color: red;
         font-size: 1.5rem;
+        margin:5px;
+        vertical-align:central;
     }
 
-    .fieldName{
-        text-align:center;
-        padding-left:5px;
-        padding-right:5px;
+    .fieldName {
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .icon-bar {
@@ -549,6 +569,7 @@ function resetFields(){
     .question {
         background: black;
     }
+
     .trash {
         font-size: 1.3rem;
         margin-top: 0px;
@@ -565,11 +586,30 @@ function resetFields(){
         border-radius: 5%;
     }
 
-    .card-header{
+    .card-header {
         margin: 0px;
         padding: 8px;
         font-size: 16px;
         font-weight: 600;
-        text-align:center;
+        text-align: center;
+    }
+    table.table-striped.table-bordered{
+        width:100%;
+        table-layout: fixed;
+
+    }
+    input{
+        width:85%;
+        float:left;
+        margin:5px;
+    }
+    .fieldName{
+        width:15%;
+    }
+    body{
+       min-width:1030px;        /* Suppose you want minimum width of 1000px */
+       width: auto !important;  /* Firefox will set width as auto */
+       width:1000px;            /* As IE6 ignores !important it will set width as 1000px; */
+       overflow-x:scroll;
     }
 </style>
