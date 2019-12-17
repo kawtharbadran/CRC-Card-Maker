@@ -169,7 +169,7 @@ function resetFields(){
                                         Card Name
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="name_Card_${i + 1}">
+                                        <div class="CRCCard block classNameDiv" id="name_Card_${i + 1}">
                                             <input onkeyup=editHeader(this) onchange=editHeader(this)>
                                         </div>
                                     </td>
@@ -179,7 +179,7 @@ function resetFields(){
                                         Superclasses
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="superClasses_Card_${i + 1}">
+                                        <div class="CRCCard block superClassesDiv" id="superClasses_Card_${i + 1}">
                                                 <input>
                                                 <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -190,7 +190,7 @@ function resetFields(){
                                         Subclasses
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="subClasses_Card_${i + 1}">
+                                        <div class="CRCCard block subClassesDiv" id="subClasses_Card_${i + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -201,7 +201,7 @@ function resetFields(){
                                         Responsibilities
                                     </td>
                                     <td colspan="1">
-                                        <div class="CRCCard block input_fields_wrap3" id="responsibilities_Card_${i + 1}">
+                                        <div class="CRCCard block responsibilitiesDiv" id="responsibilities_Card_${i + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -210,7 +210,7 @@ function resetFields(){
                                         Collaborators
                                     </td>
                                     <td colspan="1">
-                                        <div class="CRCCard block input_fields_wrap4" id="collaborators_Card_${i + 1}">
+                                        <div class="CRCCard block collaboratorsDiv" id="collaborators_Card_${i + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -287,9 +287,23 @@ function resetFields(){
         //re-number cards underneath the one that just got deleted.
         //get the children of the big body that containa all the cards and loop to update the numbers in the headers of each a card
         var parent = document.getElementById("bodyForAllCards");
+        var allClassNameDivs = document.getElementsByClassName("classNameDiv");
+        var allSuperClassesDivs = document.getElementsByClassName("superClassesDiv");
+        var allSubClassesDivs = document.getElementsByClassName("subClassesDiv");
+        var allcollaboratorsDivs = document.getElementsByClassName("collaboratorsDiv");
+        var allresponsibilitiesDivs = document.getElementsByClassName("responsibilitiesDiv");
+        var allCardHeaderBasedOnInput = document.getElementsByClassName("CardNameBasedOnInput");
+
         var cardsCount = document.getElementById("bodyForAllCards").childElementCount;
         for (let i = 0; i < cardsCount; i++) {
             parent.children[i].children[0].children[0].innerHTML = `CRC Card ${i + 1}`;
+            allClassNameDivs[i].id = `name_Card_${i + 1}`;
+            allSuperClassesDivs[i].id = `superClasses_Card${i + 1}`;
+            allSubClassesDivs[i].id = `subClasses_Card_${i + 1}`;
+            allcollaboratorsDivs[i].id = `collaborators_Card_${i + 1}`;
+            allresponsibilitiesDivs[i].id = `responsibilities_Card_${i + 1}`;
+            allCardHeaderBasedOnInput[i].id = `classNameinHeader_card_${i + 1}`;
+            parent.children[i].id = `card${i + 1}`;
         }
     });
 
@@ -299,7 +313,7 @@ function resetFields(){
         var parent = document.getElementById("bodyForAllCards");
         var cardsCount = document.getElementById("bodyForAllCards").childElementCount;
         if (cardsCount == 20) {
-            var btn = document.getElementsByClassName("AddCardBtn");   // Get the first <h1> element in the document
+            var btn = document.getElementsByClassName("AddCardBtn");
             for (let i = 0; i < btn.length; i++) {
                 var att = document.createAttribute("data-toggle");       // Create a "class" attribute
                 att.value = "modal";
@@ -330,7 +344,7 @@ function resetFields(){
                                         Card Name
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="name_Card_${cardsCount + 1}">
+                                        <div class="CRCCard block classNameDiv" id="name_Card_${cardsCount + 1}">
                                             <input onkeyup=editHeader(this) />
                                         </div>
                                     </td>
@@ -340,7 +354,7 @@ function resetFields(){
                                         Superclasses
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="superClasses_Card_${cardsCount + 1}">
+                                        <div class="CRCCard block superClassesDiv" id="superClasses_Card_${cardsCount + 1}">
                                                 <input>
                                                 <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -351,7 +365,7 @@ function resetFields(){
                                         Subclasses
                                     </td>
                                     <td colspan="3">
-                                        <div class="CRCCard block" id="subClasses_Card_${cardsCount + 1}">
+                                        <div class="CRCCard block subClassesDiv" id="subClasses_Card_${cardsCount + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -362,7 +376,7 @@ function resetFields(){
                                         Responsibilities
                                     </td>
                                     <td colspan="1">
-                                        <div class="CRCCard block input_fields_wrap3" id="responsibilities_Card_${cardsCount + 1}">
+                                        <div class="CRCCard block responsibilitiesDiv" id="responsibilities_Card_${cardsCount + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
@@ -371,7 +385,7 @@ function resetFields(){
                                         Collaborators
                                     </td>
                                     <td colspan="1">
-                                        <div class="CRCCard block input_fields_wrap4" id="collaborators_Card_${cardsCount + 1}">
+                                        <div class="CRCCard block collaboratorsDiv" id="collaborators_Card_${cardsCount + 1}">
                                             <input>
                                             <ion-icon class="add_field_button addIcon" name="add-circle"></ion-icon>
                                         </div>
