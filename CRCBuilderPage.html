@@ -29,14 +29,14 @@
                 <span id="helpIcon" data-toggle="popover" data-placement="top" title="Help" role="button">
                     <ion-icon name="help-circle" size="large"></ion-icon>
                 </span>
-              </a>
+            </a>
 
-              <span  id="resetIcon" data-toggle="popover" data-placement="top" title="Reset Fields" role="button">
-                    <button id="reset" style="background-color:#593196; border-color:#593196; color:white" onclick="resetFields()">
-                      <ion-icon name="redo" size="small"></ion-icon>
-                      </button>
+            <span id="resetIcon" data-toggle="popover" data-placement="top" title="Reset Fields" role="button">
+                <button id="reset" style="background-color:#593196; border-color:#593196; color:white" data-toggle="modal" data-target="#confirmResetDialog">
+                    <ion-icon name="redo" size="small"></ion-icon>
+                </button>
 
-                </span>
+            </span>
 
         </div>
     </nav>
@@ -96,6 +96,25 @@
             </div>
         </div>
     </div>
+    <div class="modal" role="dialog" id="confirmResetDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset All Cards</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to clear all the fields? You cannot undo this action.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnResetConfirmed">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <input type="hidden" value="" id="cardSelectedForDelete" />
 </body>
 
@@ -113,6 +132,10 @@ function resetFields(){
         textArea.innerHTML = "";
     });
 
+    //clear card headers
+    $('.CardNameBasedOnInput').each(function () {
+        this.innerHTML = "";
+    });
 }
 </script>
 
@@ -147,7 +170,7 @@ function resetFields(){
                                     </td>
                                     <td colspan="3">
                                         <div class="CRCCard block" id="name_Card_${i + 1}">
-                                            <input onkeyup=editHeader(this)>
+                                            <input onkeyup=editHeader(this) onchange=editHeader(this)>
                                         </div>
                                     </td>
                                 </tr>
@@ -216,6 +239,13 @@ function resetFields(){
             }
         });
     }
+
+    //reset fields when user clicks yes in th edialog that asks for confirmation
+    $('#btnResetConfirmed').on('click', function () {
+        resetFields();
+        $('.close').click();
+    });
+
     function reCreateAddFieldHandler() {
 
         $('.add_field_button').on('click', function (e) { //on add input button click
